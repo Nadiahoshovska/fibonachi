@@ -1,0 +1,48 @@
+
+package epam_lesson1;
+
+import java.math.BigInteger;
+
+public class Fibonachi {
+	private final static int size = 1000;
+	private final static int number = 576;
+	private static int count;
+	private static BigInteger chuslo;
+	
+	
+	public static void  Fib(int iter, BigInteger fn_1, BigInteger fn_2){
+		
+		BigInteger fn = fn_1.add(fn_2); ;
+		if (iter==1){
+			 fn = BigInteger.ONE;
+		 }
+		if (iter==number){
+			 chuslo = fn;
+		 }
+		fn_2 = fn_1; 
+		fn_1= fn;
+		
+		if (fn.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO)){
+			count++;
+		}
+		System.out.println(iter+"    "+   fn);
+		iter++;
+		 if(iter<size){
+			 Fib(iter,fn_1,fn_2); 
+		 } 
+	
+	}
+	
+
+	
+
+	public static void main(String[] args) {
+		
+		BigInteger zero = BigInteger.ZERO; 
+		Fib(0,zero,zero);
+		int pro = (int) (count*100/size);
+		System.out.println("parni " + pro+"%");
+		System.out.println("ne parni " + (100-pro)+"%");
+		System.out.println(number + " is "+ chuslo);
+	}
+}
