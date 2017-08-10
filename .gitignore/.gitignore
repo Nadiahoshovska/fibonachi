@@ -1,14 +1,13 @@
-
 package epam_lesson1;
 
 import java.math.BigInteger;
+import java.util.Scanner;
 
 public class Fibonachi {
-	private final static int size = 1000;
-	private final static int number = 576;
+	private  static int size ;
+	private  static int number;
 	private static int count;
 	private static BigInteger chuslo;
-	
 	
 	public static void  Fib(int iter, BigInteger fn_1, BigInteger fn_2){
 		
@@ -37,6 +36,13 @@ public class Fibonachi {
 	
 
 	public static void main(String[] args) {
+		System.out.println("Enter the number of Fibonacci numbers:");
+		Scanner scan = new Scanner(System.in);
+		int s = scan.nextInt();
+		size= s;
+		System.out.println("Enter the selected number: ");
+		s = scan.nextInt();
+		number = s;
 		
 		BigInteger zero = BigInteger.ZERO; 
 		Fib(0,zero,zero);
@@ -44,5 +50,8 @@ public class Fibonachi {
 		System.out.println("parni " + pro+"%");
 		System.out.println("ne parni " + (100-pro)+"%");
 		System.out.println(number + " is "+ chuslo);
+		
+
+
 	}
 }
