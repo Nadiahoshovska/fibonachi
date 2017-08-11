@@ -6,28 +6,31 @@ import java.util.Scanner;
 public class Fibonachi {
 	private  static int size ;
 	private  static int number;
-	private static int count;
-	private static BigInteger chuslo;
+	private static int countEvenNumber;
+	private static BigInteger someNumber;
+
+
 	
-	public static void  Fib(int iter, BigInteger fn_1, BigInteger fn_2){
+	
+	public static void  fibonachi(int iter, BigInteger fnPrevious, BigInteger fnBeforePrevious){
 		
-		BigInteger fn = fn_1.add(fn_2); ;
+		BigInteger fn = fnPrevious.add(fnBeforePrevious); ;
 		if (iter==1){
 			 fn = BigInteger.ONE;
 		 }
 		if (iter==number){
-			 chuslo = fn;
+			 someNumber = fn;
 		 }
-		fn_2 = fn_1; 
-		fn_1= fn;
+		fnBeforePrevious = fnPrevious; 
+		fnPrevious= fn;
 		
 		if (fn.mod(BigInteger.valueOf(2)).equals(BigInteger.ZERO)){
-			count++;
+			countEvenNumber++;
 		}
 		System.out.println(iter+"    "+   fn);
 		iter++;
 		 if(iter<size){
-			 Fib(iter,fn_1,fn_2); 
+			 fibonachi(iter,fnPrevious,fnBeforePrevious); 
 		 } 
 	
 	}
@@ -40,18 +43,21 @@ public class Fibonachi {
 		Scanner scan = new Scanner(System.in);
 		int s = scan.nextInt();
 		size= s;
-		System.out.println("Enter the selected number: ");
+		System.out.println("Enter the selected number ");
 		s = scan.nextInt();
 		number = s;
 		
 		BigInteger zero = BigInteger.ZERO; 
-		Fib(0,zero,zero);
-		int pro = (int) (count*100/size);
-		System.out.println("parni " + pro+"%");
-		System.out.println("ne parni " + (100-pro)+"%");
-		System.out.println(number + " is "+ chuslo);
-		
-
+		fibonachi(0,zero,zero);
+		int pro = (int) (countEvenNumber*100/size);
+		System.out.println("Even Numbers -  " + pro+"%");
+		System.out.println("Odd Numbers -  " + (100-pro)+"%");
+		System.out.println(number + " is "+ someNumber);
+	
 
 	}
 }
+
+
+
+
